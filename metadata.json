@@ -1,0 +1,7 @@
+{
+  "name": "CorpVision Redesign Showcase",
+  "description": "A high-performance React prototype showcasing a modern corporate redesign with a filterable directory, seamless e-commerce, and AI-powered listing tools.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
