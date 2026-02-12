@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Page, Product, CartItem } from './types.ts';
 import Header from './components/Header.tsx';
@@ -50,30 +49,30 @@ const App: React.FC = () => {
   };
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [currentPage]);
 
   const renderContent = () => {
     if (isOrderComplete) {
       return (
         <div className="max-w-7xl mx-auto px-4 py-32 text-center animate-fade-in">
-          <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-8 text-green-600">
+          <div className="w-24 h-24 bg-indigo-50 rounded-full flex items-center justify-center mx-auto mb-8 text-indigo-600 shadow-inner">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <h1 className="text-4xl font-extrabold text-slate-900 mb-4 tracking-tight">Order Confirmed!</h1>
+          <h1 className="text-4xl font-bold text-slate-900 mb-4 tracking-tight">Purchase Successful</h1>
           <p className="text-lg text-slate-600 mb-12 max-w-md mx-auto">
-            Your enterprise transformation has begun. Check your email for receipt and access instructions.
+            Your transformation package is being prepared. Our team will contact your enterprise representative within the hour.
           </p>
           <button 
             onClick={() => {
               setIsOrderComplete(false);
               setCurrentPage(Page.Home);
             }}
-            className="px-10 py-4 bg-slate-900 text-white font-bold rounded-full hover:bg-indigo-600 transition-all shadow-xl active:scale-95"
+            className="px-12 py-4 bg-indigo-600 text-white font-bold rounded-full hover:bg-indigo-700 transition-all shadow-xl shadow-indigo-200 active:scale-95"
           >
-            Return to Dashboard
+            Back to Dashboard
           </button>
         </div>
       );
@@ -83,69 +82,76 @@ const App: React.FC = () => {
       case Page.Home:
         return (
           <div className="animate-fade-in">
-            <section className="relative overflow-hidden pt-20 pb-20 md:pt-32 md:pb-32 bg-slate-900 text-white">
-              <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
-              <div className="max-w-7xl mx-auto px-4 relative z-10 text-center">
-                <span className="inline-block px-4 py-1.5 rounded-full bg-indigo-500/20 text-indigo-400 text-xs font-bold uppercase tracking-wider mb-6 border border-indigo-500/30">
-                  Platform Relaunch v2.0
-                </span>
-                <h1 className="text-5xl md:text-7xl font-extrabold mb-8 leading-tight tracking-tight">
-                  Modern Enterprise <br/>
-                  <span className="bg-gradient-to-r from-indigo-400 to-teal-400 bg-clip-text text-transparent">Unified Infrastructure.</span>
-                </h1>
-                <p className="text-xl text-slate-400 max-w-2xl mx-auto mb-12">
-                  A sleek, high-performance ecosystem designed for the modern business world. 
-                  Streamlined directory services and seamless e-commerce, built for speed.
-                </p>
-                <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                  <button 
-                    onClick={() => setCurrentPage(Page.Directory)}
-                    className="w-full sm:w-auto px-10 py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-full transition-all shadow-lg shadow-indigo-500/25 active:scale-95"
-                  >
-                    Browse Directory
-                  </button>
-                  <button 
-                    onClick={() => setCurrentPage(Page.Shop)}
-                    className="w-full sm:w-auto px-10 py-4 bg-white/10 hover:bg-white/20 text-white font-bold rounded-full backdrop-blur-sm transition-all border border-white/20 active:scale-95"
-                  >
-                    Visit Store
-                  </button>
+            {/* Optimized Hero Section */}
+            <section className="relative overflow-hidden pt-24 pb-32 hero-gradient text-white">
+              <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#fff 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
+              <div className="max-w-7xl mx-auto px-4 relative z-10">
+                <div className="max-w-3xl">
+                  <span className="inline-flex items-center px-3 py-1 rounded-full bg-white/10 text-indigo-200 text-xs font-bold uppercase tracking-widest mb-8 border border-white/10 backdrop-blur-sm">
+                    <span className="w-2 h-2 rounded-full bg-indigo-400 mr-2 animate-pulse"></span>
+                    Now Scaling Globally
+                  </span>
+                  <h1 className="text-6xl md:text-8xl font-bold mb-8 leading-[1.1] tracking-tighter">
+                    Enterprise <br/>
+                    <span className="text-indigo-400">Intelligence.</span>
+                  </h1>
+                  <p className="text-xl text-slate-300 mb-12 leading-relaxed font-light">
+                    We've rebuilt the corporate landscape from the ground up. Experience a unified directory and procurement ecosystem designed for the high-velocity enterprise.
+                  </p>
+                  <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-6">
+                    <button 
+                      onClick={() => setCurrentPage(Page.Directory)}
+                      className="w-full sm:w-auto px-10 py-5 bg-white text-slate-900 font-bold rounded-full hover:bg-indigo-50 transition-all shadow-2xl active:scale-95"
+                    >
+                      Find Partners
+                    </button>
+                    <button 
+                      onClick={() => setCurrentPage(Page.Shop)}
+                      className="w-full sm:w-auto px-10 py-5 bg-white/5 hover:bg-white/10 text-white font-bold rounded-full border border-white/20 backdrop-blur-md transition-all active:scale-95"
+                    >
+                      Browse Solutions
+                    </button>
+                  </div>
                 </div>
               </div>
             </section>
-            <section className="py-24 bg-white">
+
+            {/* Core Value Props */}
+            <section className="py-32 bg-white">
               <div className="max-w-7xl mx-auto px-4">
-                <div className="text-center mb-16">
-                  <h2 className="text-3xl font-bold text-slate-900 mb-4">Engineered for Performance</h2>
-                  <p className="text-slate-600">Built from the ground up to replace legacy infrastructure with lightning-fast experiences.</p>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-                  <div className="p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:border-indigo-200 transition-colors group">
-                    <div className="w-12 h-12 bg-indigo-100 rounded-2xl flex items-center justify-center text-indigo-600 mb-6 group-hover:bg-indigo-600 group-hover:text-white transition-all">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                      </svg>
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                  <div className="lg:col-span-4">
+                    <h2 className="text-4xl font-bold text-slate-900 mb-6 leading-tight">Built for Performance. <br/>Architected for Trust.</h2>
+                    <p className="text-slate-600 mb-8 leading-relaxed text-lg">
+                      Our platform replaces patched-over legacy systems with a lean, purpose-built infrastructure that prioritizes the user experience above all else.
+                    </p>
+                    <div className="flex items-center space-x-4">
+                      <div className="text-center">
+                        <div className="text-3xl font-bold text-indigo-600">99.9%</div>
+                        <div className="text-xs text-slate-400 uppercase tracking-widest font-bold">Uptime</div>
+                      </div>
+                      <div className="w-px h-8 bg-slate-200"></div>
+                      <div className="text-center">
+                        <div className="text-3xl font-bold text-indigo-600">Green</div>
+                        <div className="text-xs text-slate-400 uppercase tracking-widest font-bold">Web Vitals</div>
+                      </div>
                     </div>
-                    <h3 className="text-xl font-bold text-slate-900 mb-3">Ultra-Fast Loading</h3>
-                    <p className="text-slate-600 leading-relaxed">Core Web Vitals scores optimized to stay in the green. Lean code for maximum responsiveness.</p>
                   </div>
-                  <div className="p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:border-indigo-200 transition-colors group">
-                    <div className="w-12 h-12 bg-indigo-100 rounded-2xl flex items-center justify-center text-indigo-600 mb-6 group-hover:bg-indigo-600 group-hover:text-white transition-all">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                      </svg>
+                  <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div className="p-10 rounded-[2.5rem] bg-slate-50 border border-slate-100 hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-500 group">
+                      <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-indigo-600 mb-8 shadow-sm group-hover:bg-indigo-600 group-hover:text-white transition-all">
+                        <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                      </div>
+                      <h3 className="text-2xl font-bold text-slate-900 mb-4">Deep Directory</h3>
+                      <p className="text-slate-500 leading-relaxed">Advanced taxonomies and real-time filtering to connect you with the right enterprise partners instantly.</p>
                     </div>
-                    <h3 className="text-xl font-bold text-slate-900 mb-3">Smart Directory</h3>
-                    <p className="text-slate-600 leading-relaxed">Deeply searchable business listings with advanced filtering and intuitive navigation.</p>
-                  </div>
-                  <div className="p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:border-indigo-200 transition-colors group">
-                    <div className="w-12 h-12 bg-indigo-100 rounded-2xl flex items-center justify-center text-indigo-600 mb-6 group-hover:bg-indigo-600 group-hover:text-white transition-all">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                      </svg>
+                    <div className="p-10 rounded-[2.5rem] bg-slate-50 border border-slate-100 hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-500 group">
+                      <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-indigo-600 mb-8 shadow-sm group-hover:bg-indigo-600 group-hover:text-white transition-all">
+                        <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                      </div>
+                      <h3 className="text-2xl font-bold text-slate-900 mb-4">Unified Commerce</h3>
+                      <p className="text-slate-500 leading-relaxed">A checkout flow so seamless, it feels purpose-built for your specific business logic. Frictionless procurement.</p>
                     </div>
-                    <h3 className="text-xl font-bold text-slate-900 mb-3">Sleek Checkout</h3>
-                    <p className="text-slate-600 leading-relaxed">A modern e-commerce experience that removes friction and drives higher conversion rates.</p>
                   </div>
                 </div>
               </div>
@@ -161,19 +167,19 @@ const App: React.FC = () => {
       case Page.Checkout:
         return <CheckoutPage cart={cart} onComplete={handleCompleteOrder} onNavigate={setCurrentPage} />;
       default:
-        return <div className="p-20 text-center">Page under construction</div>;
+        return <div className="p-20 text-center">Section under maintenance</div>;
     }
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col selection:bg-indigo-100 selection:text-indigo-700">
       <Header 
         currentPage={currentPage} 
         onNavigate={setCurrentPage} 
         cartCount={cartCount}
         onCartOpen={() => setIsCartOpen(true)}
       />
-      <main className="flex-grow">
+      <main className="flex-grow bg-[#fcfcfd]">
         {renderContent()}
       </main>
       <CartDrawer 
@@ -183,44 +189,46 @@ const App: React.FC = () => {
         onUpdateQuantity={handleUpdateQuantity}
         onCheckout={handleCheckout}
       />
-      <footer className="bg-slate-900 text-slate-400 py-16 border-t border-slate-800">
+      <footer className="bg-slate-900 text-slate-500 py-24 border-t border-white/5">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-16 mb-20">
             <div className="md:col-span-2">
-              <div className="flex items-center space-x-2 text-white mb-6">
-                <div className="w-8 h-8 bg-indigo-600 rounded flex items-center justify-center text-white font-bold">C</div>
-                <span className="text-xl font-bold tracking-tight">CorpVision</span>
+              <div className="flex items-center space-x-3 text-white mb-8">
+                <div className="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-indigo-500/20">C</div>
+                <span className="text-2xl font-bold tracking-tight">CorpVision</span>
               </div>
-              <p className="max-w-sm mb-6">
-                The future of corporate identity and digital ecosystems. 
-                Redefining the relationship between businesses and technology through elegant design.
+              <p className="max-w-sm mb-10 text-lg leading-relaxed">
+                Empowering the next generation of enterprise ecosystems with high-performance, design-first digital solutions.
               </p>
             </div>
             <div>
-              <h4 className="text-white font-bold mb-6">Platform</h4>
-              <ul className="space-y-4 text-sm">
-                <li><button onClick={() => setCurrentPage(Page.Directory)} className="hover:text-white transition-colors">Directory</button></li>
+              <h4 className="text-white font-bold mb-8 uppercase tracking-widest text-xs">Ecosystem</h4>
+              <ul className="space-y-4">
+                <li><button onClick={() => setCurrentPage(Page.Directory)} className="hover:text-white transition-colors">Directory Listing</button></li>
                 <li><button onClick={() => setCurrentPage(Page.Shop)} className="hover:text-white transition-colors">Enterprise Store</button></li>
-                <li><button onClick={() => setCurrentPage(Page.SubmitListing)} className="hover:text-white transition-colors">List Your Business</button></li>
+                <li><button onClick={() => setCurrentPage(Page.SubmitListing)} className="hover:text-white transition-colors">Partner Program</button></li>
               </ul>
             </div>
             <div>
-              <h4 className="text-white font-bold mb-6">Company</h4>
-              <ul className="space-y-4 text-sm">
-                <li><a href="#" className="hover:text-white transition-colors">About Us</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Careers</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Contact Support</a></li>
+              <h4 className="text-white font-bold mb-8 uppercase tracking-widest text-xs">Support</h4>
+              <ul className="space-y-4">
+                <li><a href="#" className="hover:text-white transition-colors">API Documentation</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Compliance</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Corporate Legal</a></li>
               </ul>
             </div>
           </div>
-          <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center text-xs">
-            <p>&copy; 2024 CorpVision Ecosystems. All rights reserved.</p>
-            <div className="mt-4 md:mt-0 flex space-x-6">
-              <span className="flex items-center space-x-1">
-                <span className="w-2 h-2 rounded-full bg-green-500"></span>
-                <span>System Status: Optimal</span>
+          <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-sm">
+            <p>&copy; 2024 CorpVision Global. All rights reserved.</p>
+            <div className="mt-6 md:mt-0 flex items-center space-x-8">
+              <span className="flex items-center space-x-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]"></span>
+                <span className="text-white/80">Systems Operational</span>
               </span>
-              <span>Built with React + Gemini AI</span>
+              <div className="flex space-x-4">
+                <a href="#" className="hover:text-white transition-colors">Privacy</a>
+                <a href="#" className="hover:text-white transition-colors">Terms</a>
+              </div>
             </div>
           </div>
         </div>
