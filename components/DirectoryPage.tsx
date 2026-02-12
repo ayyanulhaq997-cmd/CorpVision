@@ -1,14 +1,19 @@
 import React, { useState, useMemo } from 'react';
-import { MOCK_LISTINGS, CATEGORIES, INDUSTRIES } from '../constants.tsx';
+import { CATEGORIES, INDUSTRIES } from '../constants.tsx';
+import { BusinessListing } from '../types.ts';
 
-const DirectoryPage: React.FC = () => {
+interface DirectoryPageProps {
+  listings: BusinessListing[];
+}
+
+const DirectoryPage: React.FC<DirectoryPageProps> = ({ listings }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [selectedIndustry, setSelectedIndustry] = useState<string>('All');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
 
   const filteredListings = useMemo(() => {
-    return MOCK_LISTINGS.filter((listing) => {
+    return listings.filter((listing) => {
       const matchesSearch = 
         listing.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
         listing.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -17,7 +22,7 @@ const DirectoryPage: React.FC = () => {
       const matchesIndustry = selectedIndustry === 'All' || listing.industry === selectedIndustry;
       return matchesSearch && matchesCategory && matchesIndustry;
     });
-  }, [searchTerm, selectedCategory, selectedIndustry]);
+  }, [listings, searchTerm, selectedCategory, selectedIndustry]);
 
   return (
     <div className="py-12 bg-slate-50/50 min-h-screen animate-page-in">

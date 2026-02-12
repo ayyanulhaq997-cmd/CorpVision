@@ -1,12 +1,12 @@
 import React from 'react';
-import { MOCK_PRODUCTS } from '../constants.tsx';
 import { Product } from '../types.ts';
 
 interface ShopPageProps {
+  products: Product[];
   onAddToCart: (product: Product) => void;
 }
 
-const ShopPage: React.FC<ShopPageProps> = ({ onAddToCart }) => {
+const ShopPage: React.FC<ShopPageProps> = ({ products, onAddToCart }) => {
   return (
     <div className="py-16 bg-white min-h-screen animate-page-in">
       <div className="max-w-7xl mx-auto px-4">
@@ -25,7 +25,7 @@ const ShopPage: React.FC<ShopPageProps> = ({ onAddToCart }) => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-          {MOCK_PRODUCTS.map((product) => (
+          {products.map((product) => (
             <div key={product.id} className="group relative flex flex-col bg-white rounded-3xl transition-all duration-500">
               <div className="relative h-[400px] bg-slate-100 rounded-[2rem] overflow-hidden mb-8 shadow-sm group-hover:shadow-2xl transition-all duration-500">
                 <img 

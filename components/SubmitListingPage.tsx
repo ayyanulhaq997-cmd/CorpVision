@@ -1,19 +1,20 @@
-
 import React, { useState } from 'react';
 import { generateListingDescription } from '../services/geminiService.ts';
-import { Page } from '../types.ts';
+import { Page, BusinessListing } from '../types.ts';
 
 interface SubmitListingPageProps {
+  onAddListing: (listing: Omit<BusinessListing, 'id' | 'rating' | 'status'>) => void;
   onNavigate: (page: Page) => void;
 }
 
-const SubmitListingPage: React.FC<SubmitListingPageProps> = ({ onNavigate }) => {
+const SubmitListingPage: React.FC<SubmitListingPageProps> = ({ onAddListing, onNavigate }) => {
   const [formData, setFormData] = useState({
     name: '',
     industry: 'Technology',
     keywords: '',
     description: '',
-    location: ''
+    location: '',
+    category: 'Technology'
   });
   const [isGenerating, setIsGenerating] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -31,13 +32,21 @@ const SubmitListingPage: React.FC<SubmitListingPageProps> = ({ onNavigate }) => 
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    onAddListing({
+      name: formData.name,
+      industry: formData.industry,
+      description: formData.description,
+      location: formData.location,
+      category: formData.category,
+      image: `https://picsum.photos/seed/${formData.name.replace(/\s/g, '')}/400/300`
+    });
     setIsSubmitted(true);
     setTimeout(() => onNavigate(Page.Directory), 2000);
   };
 
   if (isSubmitted) {
     return (
-      <div className="max-w-2xl mx-auto px-4 py-20 text-center">
+      <div className="max-w-2xl mx-auto px-4 py-20 text-center animate-page-in">
         <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 text-green-600">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
@@ -50,8 +59,8 @@ const SubmitListingPage: React.FC<SubmitListingPageProps> = ({ onNavigate }) => 
   }
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-12">
-      <div className="mb-10">
+    <div className="max-w-3xl mx-auto px-4 py-12 animate-page-in">
+      <div className="mb-10 text-center md:text-left">
         <h1 className="text-4xl font-extrabold text-slate-900 mb-2 tracking-tight">Join the Network</h1>
         <p className="text-lg text-slate-600">Showcase your business to our global corporate audience.</p>
       </div>
@@ -79,6 +88,7 @@ const SubmitListingPage: React.FC<SubmitListingPageProps> = ({ onNavigate }) => 
               <option>Finance</option>
               <option>Health</option>
               <option>Retail</option>
+              <option>Logistics</option>
             </select>
           </div>
         </div>

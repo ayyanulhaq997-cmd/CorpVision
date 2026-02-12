@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Page, Product, CartItem } from './types.ts';
+import { Page, Product, CartItem, BusinessListing } from './types.ts';
+import { MOCK_LISTINGS, MOCK_PRODUCTS } from './constants.tsx';
 import Header from './components/Header.tsx';
 import DirectoryPage from './components/DirectoryPage.tsx';
 import ShopPage from './components/ShopPage.tsx';
@@ -10,12 +11,37 @@ import WordPressAdmin from './components/WordPressAdmin.tsx';
 
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<Page>(Page.Home);
+  const [listings, setListings] = useState<BusinessListing[]>(MOCK_LISTINGS);
+  const [products, setProducts] = useState<Product[]>(MOCK_PRODUCTS);
   const [cart, setCart] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isOrderComplete, setIsOrderComplete] = useState(false);
   const [isAdminMode, setIsAdminMode] = useState(false);
 
   const cartCount = cart.reduce((acc, item) => acc + item.quantity, 0);
+
+  // Central Handler for adding listings
+  const handleAddListing = (newListing: Omit<BusinessListing, 'id' | 'rating' | 'status'>) => {
+    console.log('App: Adding new listing...', newListing);
+    const listing: BusinessListing = {
+      ...newListing,
+      id: `listing-${Date.now()}-${Math.random().toString(36).substr(2, 5)}`,
+      rating: 5.0,
+      status: 'pending'
+    };
+    setListings(prev => [listing, ...prev]);
+  };
+
+  // Central Handler for adding products
+  const handleAddProduct = (newProduct: Omit<Product, 'id' | 'stock'>) => {
+    console.log('App: Adding new product...', newProduct);
+    const product: Product = {
+      ...newProduct,
+      id: `prod-${Date.now()}-${Math.random().toString(36).substr(2, 5)}`,
+      stock: 50
+    };
+    setProducts(prev => [product, ...prev]);
+  };
 
   const handleAddToCart = (product: Product) => {
     setCart(prev => {
@@ -57,7 +83,12 @@ const App: React.FC = () => {
   if (isAdminMode) {
     return (
       <div className="relative">
-        <WordPressAdmin />
+        <WordPressAdmin 
+          listings={listings} 
+          products={products} 
+          onAddListing={handleAddListing}
+          onAddProduct={handleAddProduct}
+        />
         <button 
           onClick={() => setIsAdminMode(false)}
           className="fixed bottom-6 right-6 z-[100] px-6 py-3 bg-indigo-600 text-white font-bold rounded-full shadow-2xl hover:bg-indigo-700 transition-all flex items-center space-x-2 border-2 border-white"
@@ -99,7 +130,6 @@ const App: React.FC = () => {
       case Page.Home:
         return (
           <div className="animate-page-in">
-            {/* Ultra-Modern Hero */}
             <section className="relative pt-32 pb-48 overflow-hidden bg-white">
               <div className="absolute inset-0 bg-[radial-gradient(#4f46e5_1px,transparent_1px)] [background-size:40px_40px] opacity-[0.03]"></div>
               <div className="max-w-7xl mx-auto px-4 relative z-10">
@@ -132,8 +162,6 @@ const App: React.FC = () => {
                 </div>
               </div>
             </section>
-
-            {/* Visual Feature Grid */}
             <section className="py-32 bg-slate-50 border-y border-slate-100">
               <div className="max-w-7xl mx-auto px-4">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
@@ -170,11 +198,11 @@ const App: React.FC = () => {
           </div>
         );
       case Page.Directory:
-        return <DirectoryPage />;
+        return <DirectoryPage listings={listings} />;
       case Page.Shop:
-        return <ShopPage onAddToCart={handleAddToCart} />;
+        return <ShopPage products={products} onAddToCart={handleAddToCart} />;
       case Page.SubmitListing:
-        return <SubmitListingPage onNavigate={setCurrentPage} />;
+        return <SubmitListingPage onAddListing={handleAddListing} onNavigate={setCurrentPage} />;
       case Page.Checkout:
         return <CheckoutPage cart={cart} onComplete={handleCompleteOrder} onNavigate={setCurrentPage} />;
       default:
@@ -201,7 +229,6 @@ const App: React.FC = () => {
         onCheckout={handleCheckout}
       />
 
-      {/* Floating Toggle Button */}
       <button 
         onClick={() => setIsAdminMode(true)}
         className="fixed bottom-6 right-6 z-50 px-6 py-3 bg-slate-900 text-white font-bold rounded-full shadow-2xl hover:bg-indigo-600 transition-all flex items-center space-x-2 border-2 border-white/10"
