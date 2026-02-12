@@ -55,24 +55,24 @@ const App: React.FC = () => {
   const renderContent = () => {
     if (isOrderComplete) {
       return (
-        <div className="max-w-7xl mx-auto px-4 py-32 text-center animate-fade-in">
-          <div className="w-24 h-24 bg-indigo-50 rounded-full flex items-center justify-center mx-auto mb-8 text-indigo-600 shadow-inner">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+        <div className="max-w-7xl mx-auto px-4 py-32 text-center animate-fade-up">
+          <div className="w-20 h-20 bg-indigo-50 text-indigo-600 rounded-full flex items-center justify-center mx-auto mb-8 shadow-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <h1 className="text-4xl font-bold text-slate-900 mb-4 tracking-tight">Purchase Successful</h1>
-          <p className="text-lg text-slate-600 mb-12 max-w-md mx-auto">
-            Your transformation package is being prepared. Our team will contact your enterprise representative within the hour.
+          <h1 className="text-4xl font-bold text-slate-900 mb-4">Transaction Confirmed</h1>
+          <p className="text-slate-600 mb-12 max-w-md mx-auto">
+            Your enterprise solutions have been provisioned. Welcome to the future of corporate agility.
           </p>
           <button 
             onClick={() => {
               setIsOrderComplete(false);
               setCurrentPage(Page.Home);
             }}
-            className="px-12 py-4 bg-indigo-600 text-white font-bold rounded-full hover:bg-indigo-700 transition-all shadow-xl shadow-indigo-200 active:scale-95"
+            className="px-8 py-3 bg-indigo-600 text-white font-bold rounded-full hover:bg-indigo-700 transition-all shadow-lg"
           >
-            Back to Dashboard
+            Return to Dashboard
           </button>
         </div>
       );
@@ -81,77 +81,59 @@ const App: React.FC = () => {
     switch (currentPage) {
       case Page.Home:
         return (
-          <div className="animate-fade-in">
-            {/* Optimized Hero Section */}
-            <section className="relative overflow-hidden pt-24 pb-32 hero-gradient text-white">
-              <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#fff 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
+          <div className="animate-fade-up">
+            {/* Enterprise Hero */}
+            <section className="relative pt-20 pb-32 overflow-hidden bg-slate-950">
+              <div className="absolute inset-0 hero-pattern opacity-20"></div>
               <div className="max-w-7xl mx-auto px-4 relative z-10">
                 <div className="max-w-3xl">
-                  <span className="inline-flex items-center px-3 py-1 rounded-full bg-white/10 text-indigo-200 text-xs font-bold uppercase tracking-widest mb-8 border border-white/10 backdrop-blur-sm">
-                    <span className="w-2 h-2 rounded-full bg-indigo-400 mr-2 animate-pulse"></span>
-                    Now Scaling Globally
-                  </span>
-                  <h1 className="text-6xl md:text-8xl font-bold mb-8 leading-[1.1] tracking-tighter">
-                    Enterprise <br/>
-                    <span className="text-indigo-400">Intelligence.</span>
+                  <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-indigo-300 text-xs font-bold tracking-widest uppercase mb-10">
+                    <span className="flex h-2 w-2 rounded-full bg-indigo-500 mr-2 animate-pulse"></span>
+                    Enterprise 3.0 Platform
+                  </div>
+                  <h1 className="text-6xl md:text-8xl font-bold text-white mb-8 tracking-tighter leading-[1.05]">
+                    Reimagining <br/>
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-blue-300">Corporate Vision.</span>
                   </h1>
-                  <p className="text-xl text-slate-300 mb-12 leading-relaxed font-light">
-                    We've rebuilt the corporate landscape from the ground up. Experience a unified directory and procurement ecosystem designed for the high-velocity enterprise.
+                  <p className="text-xl text-slate-400 mb-12 leading-relaxed font-light">
+                    A lean, high-performance ecosystem for the modern enterprise. We've removed the bloat to deliver absolute clarity and speed in directory services and procurement.
                   </p>
-                  <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-6">
+                  <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6">
                     <button 
                       onClick={() => setCurrentPage(Page.Directory)}
-                      className="w-full sm:w-auto px-10 py-5 bg-white text-slate-900 font-bold rounded-full hover:bg-indigo-50 transition-all shadow-2xl active:scale-95"
+                      className="px-10 py-5 bg-white text-slate-950 font-bold rounded-2xl hover:bg-indigo-50 transition-all shadow-xl"
                     >
-                      Find Partners
+                      Explore Directory
                     </button>
                     <button 
                       onClick={() => setCurrentPage(Page.Shop)}
-                      className="w-full sm:w-auto px-10 py-5 bg-white/5 hover:bg-white/10 text-white font-bold rounded-full border border-white/20 backdrop-blur-md transition-all active:scale-95"
+                      className="px-10 py-5 bg-slate-900 text-white font-bold rounded-2xl border border-white/10 hover:bg-slate-800 transition-all"
                     >
-                      Browse Solutions
+                      Business Solutions
                     </button>
                   </div>
                 </div>
               </div>
             </section>
 
-            {/* Core Value Props */}
-            <section className="py-32 bg-white">
+            {/* Metrics Section */}
+            <section className="py-24 bg-white">
               <div className="max-w-7xl mx-auto px-4">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-                  <div className="lg:col-span-4">
-                    <h2 className="text-4xl font-bold text-slate-900 mb-6 leading-tight">Built for Performance. <br/>Architected for Trust.</h2>
-                    <p className="text-slate-600 mb-8 leading-relaxed text-lg">
-                      Our platform replaces patched-over legacy systems with a lean, purpose-built infrastructure that prioritizes the user experience above all else.
-                    </p>
-                    <div className="flex items-center space-x-4">
-                      <div className="text-center">
-                        <div className="text-3xl font-bold text-indigo-600">99.9%</div>
-                        <div className="text-xs text-slate-400 uppercase tracking-widest font-bold">Uptime</div>
-                      </div>
-                      <div className="w-px h-8 bg-slate-200"></div>
-                      <div className="text-center">
-                        <div className="text-3xl font-bold text-indigo-600">Green</div>
-                        <div className="text-xs text-slate-400 uppercase tracking-widest font-bold">Web Vitals</div>
-                      </div>
-                    </div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+                  <div className="p-8 rounded-3xl bg-slate-50 border border-slate-100">
+                    <div className="text-4xl font-bold text-indigo-600 mb-2">1.2s</div>
+                    <div className="text-sm font-bold text-slate-900 uppercase tracking-wider mb-3">Avg Load Time</div>
+                    <p className="text-slate-500 text-sm">Engineered for speed, achieving green Core Web Vitals across all mobile devices.</p>
                   </div>
-                  <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div className="p-10 rounded-[2.5rem] bg-slate-50 border border-slate-100 hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-500 group">
-                      <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-indigo-600 mb-8 shadow-sm group-hover:bg-indigo-600 group-hover:text-white transition-all">
-                        <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-                      </div>
-                      <h3 className="text-2xl font-bold text-slate-900 mb-4">Deep Directory</h3>
-                      <p className="text-slate-500 leading-relaxed">Advanced taxonomies and real-time filtering to connect you with the right enterprise partners instantly.</p>
-                    </div>
-                    <div className="p-10 rounded-[2.5rem] bg-slate-50 border border-slate-100 hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-500 group">
-                      <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-indigo-600 mb-8 shadow-sm group-hover:bg-indigo-600 group-hover:text-white transition-all">
-                        <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
-                      </div>
-                      <h3 className="text-2xl font-bold text-slate-900 mb-4">Unified Commerce</h3>
-                      <p className="text-slate-500 leading-relaxed">A checkout flow so seamless, it feels purpose-built for your specific business logic. Frictionless procurement.</p>
-                    </div>
+                  <div className="p-8 rounded-3xl bg-slate-50 border border-slate-100">
+                    <div className="text-4xl font-bold text-indigo-600 mb-2">500+</div>
+                    <div className="text-sm font-bold text-slate-900 uppercase tracking-wider mb-3">Verified Partners</div>
+                    <p className="text-slate-500 text-sm">A strictly curated directory of world-class corporate service providers.</p>
+                  </div>
+                  <div className="p-8 rounded-3xl bg-slate-50 border border-slate-100">
+                    <div className="text-4xl font-bold text-indigo-600 mb-2">99.9%</div>
+                    <div className="text-sm font-bold text-slate-900 uppercase tracking-wider mb-3">Checkout Success</div>
+                    <p className="text-slate-500 text-sm">Seamless procurement flow designed for minimum friction and maximum security.</p>
                   </div>
                 </div>
               </div>
@@ -167,19 +149,19 @@ const App: React.FC = () => {
       case Page.Checkout:
         return <CheckoutPage cart={cart} onComplete={handleCompleteOrder} onNavigate={setCurrentPage} />;
       default:
-        return <div className="p-20 text-center">Section under maintenance</div>;
+        return null;
     }
   };
 
   return (
-    <div className="min-h-screen flex flex-col selection:bg-indigo-100 selection:text-indigo-700">
+    <div className="min-h-screen flex flex-col">
       <Header 
         currentPage={currentPage} 
         onNavigate={setCurrentPage} 
         cartCount={cartCount}
         onCartOpen={() => setIsCartOpen(true)}
       />
-      <main className="flex-grow bg-[#fcfcfd]">
+      <main className="flex-grow">
         {renderContent()}
       </main>
       <CartDrawer 
@@ -189,48 +171,19 @@ const App: React.FC = () => {
         onUpdateQuantity={handleUpdateQuantity}
         onCheckout={handleCheckout}
       />
-      <footer className="bg-slate-900 text-slate-500 py-24 border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-16 mb-20">
-            <div className="md:col-span-2">
-              <div className="flex items-center space-x-3 text-white mb-8">
-                <div className="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-indigo-500/20">C</div>
-                <span className="text-2xl font-bold tracking-tight">CorpVision</span>
-              </div>
-              <p className="max-w-sm mb-10 text-lg leading-relaxed">
-                Empowering the next generation of enterprise ecosystems with high-performance, design-first digital solutions.
-              </p>
-            </div>
-            <div>
-              <h4 className="text-white font-bold mb-8 uppercase tracking-widest text-xs">Ecosystem</h4>
-              <ul className="space-y-4">
-                <li><button onClick={() => setCurrentPage(Page.Directory)} className="hover:text-white transition-colors">Directory Listing</button></li>
-                <li><button onClick={() => setCurrentPage(Page.Shop)} className="hover:text-white transition-colors">Enterprise Store</button></li>
-                <li><button onClick={() => setCurrentPage(Page.SubmitListing)} className="hover:text-white transition-colors">Partner Program</button></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-white font-bold mb-8 uppercase tracking-widest text-xs">Support</h4>
-              <ul className="space-y-4">
-                <li><a href="#" className="hover:text-white transition-colors">API Documentation</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Compliance</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Corporate Legal</a></li>
-              </ul>
-            </div>
+      <footer className="bg-slate-950 text-slate-500 py-20 border-t border-white/5">
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <div className="mb-8 flex justify-center items-center space-x-3 text-white">
+             <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center font-bold">C</div>
+             <span className="text-xl font-bold tracking-tight">CorpVision</span>
           </div>
-          <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-sm">
-            <p>&copy; 2024 CorpVision Global. All rights reserved.</p>
-            <div className="mt-6 md:mt-0 flex items-center space-x-8">
-              <span className="flex items-center space-x-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]"></span>
-                <span className="text-white/80">Systems Operational</span>
-              </span>
-              <div className="flex space-x-4">
-                <a href="#" className="hover:text-white transition-colors">Privacy</a>
-                <a href="#" className="hover:text-white transition-colors">Terms</a>
-              </div>
-            </div>
+          <p className="text-sm mb-8">Ground-up redesign for the high-velocity enterprise.</p>
+          <div className="flex justify-center space-x-8 text-xs font-bold uppercase tracking-widest text-slate-400">
+            <a href="#" className="hover:text-white transition-colors">Privacy</a>
+            <a href="#" className="hover:text-white transition-colors">Terms</a>
+            <a href="#" className="hover:text-white transition-colors">Contact</a>
           </div>
+          <p className="mt-12 text-xs opacity-40">&copy; 2024 CorpVision Global. Built for Performance.</p>
         </div>
       </footer>
     </div>

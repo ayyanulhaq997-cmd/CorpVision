@@ -3,13 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CorpVision | Enterprise Solutions</title>
-    <!-- Tailwind CSS for high-performance utility styling -->
+    <title>CorpVision | Enterprise Solutions Redesign</title>
+    <!-- Tailwind CSS CDN - Sleek and modern utility-first styling -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
-        // Critical shim for process.env to prevent ReferenceErrors
+        // Critical shim for process.env to prevent ReferenceErrors in production
         window.process = window.process || { env: { API_KEY: "" } };
+        
+        // Tailwind configuration for custom brand colors
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                brand: {
+                  50: '#f5f7ff',
+                  100: '#ebf0fe',
+                  600: '#4f46e5',
+                  700: '#4338ca',
+                  900: '#1e1b4b',
+                }
+              }
+            }
+          }
+        }
     </script>
     <style>
         body {
@@ -17,28 +34,23 @@
             background-color: #fcfcfd;
             scroll-behavior: smooth;
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
-        .glass-morphism {
-            background: rgba(255, 255, 255, 0.7);
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.3);
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        @keyframes slideInRight {
-            from { transform: translateX(100%); }
-            to { transform: translateX(0); }
+        .animate-fade-up {
+            animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
-        .animate-fade-in {
-            animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-        .animate-slide-in-right {
-            animation: slideInRight 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-        .hero-gradient {
-            background: radial-gradient(circle at top right, #4f46e5 0%, #0f172a 50%);
+        .hero-pattern {
+            background-image: radial-gradient(#4f46e510 1px, transparent 1px);
+            background-size: 32px 32px;
         }
     </style>
 <script type="importmap">
