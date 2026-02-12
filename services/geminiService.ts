@@ -1,9 +1,16 @@
 
 import { GoogleGenAI, Type } from "@google/genai";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+// Standard initialization as per guidelines
+// The shim in index.html ensures process.env.API_KEY doesn't throw a ReferenceError
+const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || "" });
 
 export const generateListingDescription = async (businessName: string, industry: string, keywords: string) => {
+  // If key is missing, provide a graceful fallback instead of crashing
+  if (!process.env.API_KEY) {
+    return "API Key not configured. Please add a valid Gemini API key to your environment variables.";
+  }
+
   try {
     const response = await ai.models.generateContent({
       model: "gemini-3-flash-preview",
@@ -17,6 +24,6 @@ export const generateListingDescription = async (businessName: string, industry:
     return response.text || "Failed to generate description.";
   } catch (error) {
     console.error("Gemini API Error:", error);
-    return "Error generating content. Please try again.";
+    return "Error generating content. Please check your API configuration.";
   }
 };
