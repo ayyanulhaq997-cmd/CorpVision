@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
-import { generateListingDescription } from '../services/geminiService';
-import { Page } from '../types';
+import { generateListingDescription } from '../services/geminiService.ts';
+import { Page } from '../types.ts';
 
 interface SubmitListingPageProps {
   onNavigate: (page: Page) => void;
@@ -32,7 +32,6 @@ const SubmitListingPage: React.FC<SubmitListingPageProps> = ({ onNavigate }) => 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitted(true);
-    // Simulate API call
     setTimeout(() => onNavigate(Page.Directory), 2000);
   };
 
@@ -56,7 +55,6 @@ const SubmitListingPage: React.FC<SubmitListingPageProps> = ({ onNavigate }) => 
         <h1 className="text-4xl font-extrabold text-slate-900 mb-2 tracking-tight">Join the Network</h1>
         <p className="text-lg text-slate-600">Showcase your business to our global corporate audience.</p>
       </div>
-
       <form onSubmit={handleSubmit} className="bg-white p-8 rounded-3xl border border-slate-100 shadow-xl space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
@@ -84,7 +82,6 @@ const SubmitListingPage: React.FC<SubmitListingPageProps> = ({ onNavigate }) => 
             </select>
           </div>
         </div>
-
         <div>
           <label className="block text-sm font-semibold text-slate-700 mb-2">Keywords for AI Assistant</label>
           <input 
@@ -95,7 +92,6 @@ const SubmitListingPage: React.FC<SubmitListingPageProps> = ({ onNavigate }) => 
             placeholder="e.g. cloud, scalable, security, enterprise"
           />
         </div>
-
         <div>
           <div className="flex justify-between items-center mb-2">
             <label className="block text-sm font-semibold text-slate-700">Business Description</label>
@@ -120,7 +116,6 @@ const SubmitListingPage: React.FC<SubmitListingPageProps> = ({ onNavigate }) => 
             placeholder="Tell us what makes your business unique..."
           ></textarea>
         </div>
-
         <div>
           <label className="block text-sm font-semibold text-slate-700 mb-2">Headquarters Location</label>
           <input 
@@ -132,7 +127,6 @@ const SubmitListingPage: React.FC<SubmitListingPageProps> = ({ onNavigate }) => 
             placeholder="e.g. New York, NY"
           />
         </div>
-
         <button 
           type="submit"
           className="w-full py-4 bg-slate-900 text-white font-bold rounded-2xl hover:bg-indigo-600 transition-all shadow-xl active:scale-[0.98]"

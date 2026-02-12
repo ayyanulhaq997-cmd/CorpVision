@@ -1,12 +1,12 @@
 
 import React, { useState, useEffect } from 'react';
-import { Page, Product, CartItem } from './types';
-import Header from './components/Header';
-import DirectoryPage from './components/DirectoryPage';
-import ShopPage from './components/ShopPage';
-import SubmitListingPage from './components/SubmitListingPage';
-import CartDrawer from './components/CartDrawer';
-import CheckoutPage from './components/CheckoutPage';
+import { Page, Product, CartItem } from './types.ts';
+import Header from './components/Header.tsx';
+import DirectoryPage from './components/DirectoryPage.tsx';
+import ShopPage from './components/ShopPage.tsx';
+import SubmitListingPage from './components/SubmitListingPage.tsx';
+import CartDrawer from './components/CartDrawer.tsx';
+import CheckoutPage from './components/CheckoutPage.tsx';
 
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<Page>(Page.Home);
@@ -49,7 +49,6 @@ const App: React.FC = () => {
     setIsOrderComplete(true);
   };
 
-  // Scroll to top on page change
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [currentPage]);
@@ -84,7 +83,6 @@ const App: React.FC = () => {
       case Page.Home:
         return (
           <div className="animate-fade-in">
-            {/* Hero Section */}
             <section className="relative overflow-hidden pt-20 pb-20 md:pt-32 md:pb-32 bg-slate-900 text-white">
               <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
               <div className="max-w-7xl mx-auto px-4 relative z-10 text-center">
@@ -115,8 +113,6 @@ const App: React.FC = () => {
                 </div>
               </div>
             </section>
-
-            {/* Feature Grid */}
             <section className="py-24 bg-white">
               <div className="max-w-7xl mx-auto px-4">
                 <div className="text-center mb-16">
@@ -177,11 +173,9 @@ const App: React.FC = () => {
         cartCount={cartCount}
         onCartOpen={() => setIsCartOpen(true)}
       />
-      
       <main className="flex-grow">
         {renderContent()}
       </main>
-
       <CartDrawer 
         isOpen={isCartOpen}
         onClose={() => setIsCartOpen(false)}
@@ -189,7 +183,6 @@ const App: React.FC = () => {
         onUpdateQuantity={handleUpdateQuantity}
         onCheckout={handleCheckout}
       />
-
       <footer className="bg-slate-900 text-slate-400 py-16 border-t border-slate-800">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">

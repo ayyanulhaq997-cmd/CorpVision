@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { CartItem, Page } from '../types';
+import { CartItem, Page } from '../types.ts';
 
 interface CheckoutPageProps {
   cart: CartItem[];
@@ -17,7 +17,6 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ cart, onComplete, onNavigat
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsProcessing(true);
-    // Simulate payment processing
     setTimeout(() => {
       setIsProcessing(false);
       onComplete();
@@ -41,9 +40,7 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ cart, onComplete, onNavigat
   return (
     <div className="max-w-7xl mx-auto px-4 py-12">
       <h1 className="text-4xl font-extrabold text-slate-900 mb-8 tracking-tight">Complete Your Order</h1>
-      
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-        {/* Checkout Form */}
         <div className="lg:col-span-7 space-y-8">
           <form id="checkout-form" onSubmit={handleSubmit} className="space-y-8">
             <section className="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm">
@@ -58,7 +55,6 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ cart, onComplete, onNavigat
                 </div>
               </div>
             </section>
-
             <section className="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm">
               <h2 className="text-xl font-bold text-slate-900 mb-6 flex items-center">
                 <span className="w-8 h-8 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center text-sm mr-3">2</span>
@@ -87,7 +83,6 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ cart, onComplete, onNavigat
                 </div>
               </div>
             </section>
-
             <section className="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm">
               <h2 className="text-xl font-bold text-slate-900 mb-6 flex items-center">
                 <span className="w-8 h-8 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center text-sm mr-3">3</span>
@@ -112,8 +107,6 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ cart, onComplete, onNavigat
             </section>
           </form>
         </div>
-
-        {/* Order Summary */}
         <div className="lg:col-span-5">
           <div className="sticky top-24 space-y-6">
             <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-xl">
@@ -140,7 +133,6 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ cart, onComplete, onNavigat
                   <span>${total.toFixed(2)}</span>
                 </div>
               </div>
-              
               <button 
                 form="checkout-form"
                 disabled={isProcessing}
@@ -158,15 +150,7 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ cart, onComplete, onNavigat
                   <span>Place Order</span>
                 )}
               </button>
-              
-              <div className="mt-6 flex items-center justify-center space-x-2 text-slate-400 text-[10px] uppercase font-bold tracking-widest">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
-                </svg>
-                <span>SSL Secured Checkout</span>
-              </div>
             </div>
-            
             <div className="p-6 rounded-2xl bg-indigo-50 border border-indigo-100 flex items-start space-x-4">
               <div className="p-2 bg-indigo-100 rounded-lg text-indigo-600">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

@@ -1,5 +1,5 @@
 
-import { BusinessListing, Product } from './types';
+import { BusinessListing, Product } from './types.ts';
 
 export const CATEGORIES = ['Technology', 'Finance', 'Health', 'Retail', 'Logistics'];
 export const INDUSTRIES = ['B2B', 'B2C', 'Enterprise', 'Startup'];

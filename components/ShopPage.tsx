@@ -1,7 +1,7 @@
 
 import React from 'react';
-import { MOCK_PRODUCTS } from '../constants';
-import { Product } from '../types';
+import { MOCK_PRODUCTS } from '../constants.tsx';
+import { Product } from '../types.ts';
 
 interface ShopPageProps {
   onAddToCart: (product: Product) => void;
@@ -17,7 +17,6 @@ const ShopPage: React.FC<ShopPageProps> = ({ onAddToCart }) => {
             Streamlined procurement for your business needs. Quality software and services, one click away.
           </p>
         </div>
-
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {MOCK_PRODUCTS.map((product) => (
             <div key={product.id} className="bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col">

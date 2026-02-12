@@ -1,7 +1,7 @@
 
 import React, { useState, useMemo } from 'react';
-import { MOCK_LISTINGS, CATEGORIES, INDUSTRIES } from '../constants';
-import { BusinessListing } from '../types';
+import { MOCK_LISTINGS, CATEGORIES, INDUSTRIES } from '../constants.tsx';
+import { BusinessListing } from '../types.ts';
 
 const DirectoryPage: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -27,8 +27,6 @@ const DirectoryPage: React.FC = () => {
             Explore our curated list of world-class corporate partners and service providers.
           </p>
         </div>
-
-        {/* Filters & Search */}
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-12 items-end">
           <div className="lg:col-span-2">
             <label className="block text-sm font-semibold text-slate-700 mb-2">Search Companies</label>
@@ -68,8 +66,6 @@ const DirectoryPage: React.FC = () => {
             </select>
           </div>
         </div>
-
-        {/* Listings Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredListings.length > 0 ? (
             filteredListings.map((listing) => (

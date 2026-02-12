@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Page } from '../types';
+import { Page } from '../types.ts';
 
 interface HeaderProps {
   currentPage: Page;
@@ -22,7 +22,6 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate, cartCount, onC
           </div>
           <span className="text-xl font-bold text-slate-900 tracking-tight">CorpVision</span>
         </div>
-
         <nav className="hidden md:flex items-center space-x-8">
           {[
             { id: Page.Home, label: 'Home' },
@@ -40,7 +39,6 @@ const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate, cartCount, onC
             </button>
           ))}
         </nav>
-
         <div className="flex items-center space-x-4">
           <button 
             onClick={onCartOpen}

@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { CartItem, Page } from '../types';
+import { CartItem, Page } from '../types.ts';
 
 interface CartDrawerProps {
   isOpen: boolean;
@@ -27,7 +27,6 @@ const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose, cart, onUpdate
             </svg>
           </button>
         </div>
-
         <div className="flex-grow overflow-y-auto p-6 space-y-6">
           {cart.length === 0 ? (
             <div className="h-full flex flex-col items-center justify-center text-center opacity-60">
@@ -69,7 +68,6 @@ const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose, cart, onUpdate
             ))
           )}
         </div>
-
         {cart.length > 0 && (
           <div className="p-6 border-t border-slate-100 bg-slate-50/50">
             <div className="flex justify-between items-center mb-4">
