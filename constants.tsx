@@ -13,7 +13,9 @@ export const MOCK_LISTINGS: BusinessListing[] = [
     description: 'Providing cutting-edge cloud infrastructure for Fortune 500 companies.',
     location: 'San Francisco, CA',
     rating: 4.8,
-    image: 'https://picsum.photos/seed/tech1/400/300'
+    image: 'https://picsum.photos/seed/tech1/400/300',
+    // Fixed: Added missing 'status' property required by BusinessListing type
+    status: 'published'
   },
   {
     id: '2',
@@ -23,7 +25,9 @@ export const MOCK_LISTINGS: BusinessListing[] = [
     description: 'Next-generation algorithmic trading and wealth management tools.',
     location: 'London, UK',
     rating: 4.9,
-    image: 'https://picsum.photos/seed/finance1/400/300'
+    image: 'https://picsum.photos/seed/finance1/400/300',
+    // Fixed: Added missing 'status' property required by BusinessListing type
+    status: 'published'
   },
   {
     id: '3',
@@ -33,7 +37,9 @@ export const MOCK_LISTINGS: BusinessListing[] = [
     description: 'Eco-friendly shipping and supply chain management for small businesses.',
     location: 'Berlin, Germany',
     rating: 4.5,
-    image: 'https://picsum.photos/seed/logistics1/400/300'
+    image: 'https://picsum.photos/seed/logistics1/400/300',
+    // Fixed: Added missing 'status' property required by BusinessListing type
+    status: 'published'
   },
   {
     id: '4',
@@ -43,7 +49,9 @@ export const MOCK_LISTINGS: BusinessListing[] = [
     description: 'Comprehensive health monitoring software for hospital networks.',
     location: 'Boston, MA',
     rating: 4.7,
-    image: 'https://picsum.photos/seed/health1/400/300'
+    image: 'https://picsum.photos/seed/health1/400/300',
+    // Fixed: Added missing 'status' property required by BusinessListing type
+    status: 'published'
   }
 ];
 
@@ -54,7 +62,9 @@ export const MOCK_PRODUCTS: Product[] = [
     price: 999.00,
     category: 'Software',
     description: 'Full access for up to 50 users with 24/7 priority support.',
-    image: 'https://picsum.photos/seed/sw1/400/400'
+    image: 'https://picsum.photos/seed/sw1/400/400',
+    // Fixed: Added missing 'stock' property required by Product type
+    stock: 100
   },
   {
     id: 'p2',
@@ -62,7 +72,9 @@ export const MOCK_PRODUCTS: Product[] = [
     price: 49.99,
     category: 'Storage',
     description: '1TB of encrypted cloud storage with automatic redundancy.',
-    image: 'https://picsum.photos/seed/sw2/400/400'
+    image: 'https://picsum.photos/seed/sw2/400/400',
+    // Fixed: Added missing 'stock' property required by Product type
+    stock: 500
   },
   {
     id: 'p3',
@@ -70,6 +82,8 @@ export const MOCK_PRODUCTS: Product[] = [
     price: 249.00,
     category: 'Consulting',
     description: 'Full penetration testing and security compliance report.',
-    image: 'https://picsum.photos/seed/sw3/400/400'
+    image: 'https://picsum.photos/seed/sw3/400/400',
+    // Fixed: Added missing 'stock' property required by Product type
+    stock: 10
   }
 ];

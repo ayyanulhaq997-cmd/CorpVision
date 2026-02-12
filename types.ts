@@ -1,4 +1,3 @@
-
 export interface BusinessListing {
   id: string;
   name: string;
@@ -8,6 +7,7 @@ export interface BusinessListing {
   location: string;
   rating: number;
   image: string;
+  status: 'published' | 'pending' | 'draft';
 }
 
 export interface Product {
@@ -17,6 +17,7 @@ export interface Product {
   description: string;
   image: string;
   category: string;
+  stock: number;
 }
 
 export interface CartItem extends Product {
@@ -28,7 +29,8 @@ export enum Page {
   Directory = 'directory',
   Shop = 'shop',
   Checkout = 'checkout',
-  SubmitListing = 'submit-listing'
+  SubmitListing = 'submit-listing',
+  Admin = 'admin'
 }
 
 export interface CheckoutFormData {
